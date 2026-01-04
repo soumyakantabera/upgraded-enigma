@@ -19,7 +19,7 @@ export default function ProjectsPage() {
           <span className="font-handwritten text-primary">🚀</span> Projects
         </h1>
         <p className="text-xl text-muted-foreground mb-12 max-w-3xl">
-          Financial tools and analytics platforms I've built
+          Financial tools and analytics platforms I&apos;ve built
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">

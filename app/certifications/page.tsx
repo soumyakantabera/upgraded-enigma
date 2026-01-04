@@ -66,7 +66,7 @@ export default function CertificationsPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                I'm committed to staying current with the latest developments in finance, risk management, and technology. Currently working towards:
+                I&apos;m committed to staying current with the latest developments in finance, risk management, and technology. Currently working towards:
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li>CFA Level III (scheduled for 2025)</li>

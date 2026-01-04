@@ -20,7 +20,7 @@ export default function Home() {
         >
           <div className="mb-4">
             <span className="font-handwritten text-primary text-xl">
-              👋 Hello, I'm
+              👋 Hello, I&apos;m
             </span>
           </div>
           
@@ -55,7 +55,7 @@ export default function Home() {
           {/* Hand-drawn annotation */}
           <SketchWrapper className="mt-16 max-w-2xl">
             <p className="font-handwritten text-lg">
-              "I build data-driven solutions that transform complex financial problems into actionable insights."
+              &ldquo;I build data-driven solutions that transform complex financial problems into actionable insights.&rdquo;
             </p>
           </SketchWrapper>
         </motion.div>

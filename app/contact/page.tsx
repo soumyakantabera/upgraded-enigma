@@ -13,8 +13,8 @@ import SketchWrapper from "@/components/SketchWrapper";
 export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert("Form submission would be handled here!");
+    // Form submission handler - to be implemented with backend integration
+    console.log("Form submission would be handled here");
   };
 
   return (
@@ -28,7 +28,7 @@ export default function ContactPage() {
           <span className="font-handwritten text-primary">📬</span> Get in Touch
         </h1>
         <p className="text-xl text-muted-foreground mb-12 max-w-3xl">
-          Let's discuss opportunities, collaborations, or just connect
+          Let&apos;s discuss opportunities, collaborations, or just connect
         </p>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -135,7 +135,7 @@ export default function ContactPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl">What I'm Looking For</CardTitle>
+                <CardTitle className="text-xl">What I&apos;m Looking For</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-muted-foreground">

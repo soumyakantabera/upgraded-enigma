@@ -21,6 +21,15 @@ export default function RiskLabPage() {
     const w = parseFloat(wacc) / 100;
     const tg = parseFloat(terminalGrowth) / 100;
 
+    // Validation: WACC must be greater than terminal growth rate
+    if (w <= tg) {
+      return {
+        enterpriseValue: "N/A",
+        pvForecast: "N/A",
+        pvTerminal: "N/A",
+      };
+    }
+
     // Simple 5-year DCF calculation
     let pv = 0;
     let projectedFcf = fcfValue;
@@ -141,7 +150,7 @@ export default function RiskLabPage() {
               <CardContent className="space-y-4">
                 <TerminalBlock title="WACC.formula">
                   <div className="space-y-2 text-xs">
-                    <div className="text-green-600">// Weighted Average Cost of Capital</div>
+                    <div className="text-green-600">{`// Weighted Average Cost of Capital`}</div>
                     <div className="text-yellow-600">WACC = (E/V × Re) + (D/V × Rd × (1 - Tc))</div>
                     <div className="text-gray-400 mt-2">
                       <div>E = Market value of equity</div>
@@ -156,7 +165,7 @@ export default function RiskLabPage() {
 
                 <TerminalBlock title="NPV.formula">
                   <div className="space-y-2 text-xs">
-                    <div className="text-green-600">// Net Present Value</div>
+                    <div className="text-green-600">{`// Net Present Value`}</div>
                     <div className="text-yellow-600">NPV = Σ [CFt / (1 + r)^t] - Initial Investment</div>
                     <div className="text-gray-400 mt-2">
                       <div>CFt = Cash flow at time t</div>
@@ -168,7 +177,7 @@ export default function RiskLabPage() {
 
                 <TerminalBlock title="Sharpe.formula">
                   <div className="space-y-2 text-xs">
-                    <div className="text-green-600">// Sharpe Ratio</div>
+                    <div className="text-green-600">{`// Sharpe Ratio`}</div>
                     <div className="text-yellow-600">Sharpe = (Rp - Rf) / σp</div>
                     <div className="text-gray-400 mt-2">
                       <div>Rp = Portfolio return</div>
