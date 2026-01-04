@@ -107,10 +107,15 @@ t = Time period`}
                 <div className="text-sm text-muted-foreground">Enterprise Value</div>
                 <div className="text-2xl font-bold">
                   {dcfInputs.fcf && dcfInputs.growthRate && dcfInputs.wacc
-                    ? `$${(
-                        (parseFloat(dcfInputs.fcf) * (1 + parseFloat(dcfInputs.growthRate) / 100)) /
-                        (parseFloat(dcfInputs.wacc) / 100 - parseFloat(dcfInputs.growthRate) / 100)
-                      ).toLocaleString('en-US', { maximumFractionDigits: 0 })}`
+                    ? (() => {
+                        const wacc = parseFloat(dcfInputs.wacc) / 100
+                        const growth = parseFloat(dcfInputs.growthRate) / 100
+                        if (wacc <= growth) {
+                          return <span className="text-sm text-destructive">WACC must be greater than growth rate</span>
+                        }
+                        const value = (parseFloat(dcfInputs.fcf) * (1 + growth)) / (wacc - growth)
+                        return `$${value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`
+                      })()
                     : '$--'}
                 </div>
               </div>

@@ -1,19 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Patrick_Hand } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const patrickHand = Patrick_Hand({ 
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-patrick-hand',
-})
 
 export const metadata: Metadata = {
   title: 'Soumyakanta Bera - Finance & Risk + Analytics + AI',
@@ -27,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${patrickHand.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <Navbar />
         <main className="min-h-screen">
           {children}

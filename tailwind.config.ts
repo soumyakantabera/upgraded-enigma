@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        handwritten: ['var(--font-patrick-hand)'],
+        sans: ['ui-sans-serif', 'system-ui', 'sans-serif'],
+        handwritten: ['Comic Sans MS', 'cursive'],
       },
       colors: {
         border: 'hsl(var(--border))',
