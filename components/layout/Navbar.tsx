@@ -2,11 +2,15 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import ExplainModeToggle from "@/components/ExplainModeToggle"
+import { motion } from "framer-motion"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -27,16 +31,28 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="relative text-sm font-medium transition-colors hover:text-primary"
               >
                 {link.label}
+                {pathname === link.href && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-primary"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
               </Link>
             ))}
+          </div>
+
+          {/* Explain Mode Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <ExplainModeToggle />
           </div>
 
           {/* Mobile menu button */}
@@ -52,18 +68,28 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <motion.div
+            className="md:hidden py-4 space-y-3"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-sm font-medium transition-colors hover:text-primary"
+                className={`block py-2 text-sm font-medium transition-colors hover:text-primary ${
+                  pathname === link.href ? 'text-primary font-semibold' : ''
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-          </div>
+            <div className="pt-3 border-t">
+              <ExplainModeToggle />
+            </div>
+          </motion.div>
         )}
       </div>
     </nav>
