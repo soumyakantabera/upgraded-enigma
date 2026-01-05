@@ -57,6 +57,14 @@ npm run build
 npm start
 ```
 
+### Deploy to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages. Every push to the `main` branch triggers a GitHub Actions workflow that:
+1. Builds the static site with `npm run build`
+2. Deploys the generated files to GitHub Pages
+
+The site will be available at: `https://<username>.github.io/<repository-name>/`
+
 ## 📁 Project Structure
 
 ```
